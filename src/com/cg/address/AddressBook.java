@@ -8,6 +8,6 @@ public class AddressBook {
 
 	public void addContact(Contact newContact) {
 		book.add(newContact);
-		System.out.println("New contact Added successfully with first name: "+newContact.firstName);
+		System.out.println("New contact Added successfully with the first name: "+newContact.firstName);
 	}
 }

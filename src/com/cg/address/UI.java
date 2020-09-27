@@ -24,7 +24,5 @@ public class UI{
 			Contact newContact = new Contact(firstName, lastName, address, city, state, zipCode);
 			book.addContact(newContact);
 		}
-	
 	}
-
 }
