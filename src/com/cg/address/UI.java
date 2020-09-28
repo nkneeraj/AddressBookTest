@@ -9,23 +9,22 @@ public class UI {
 		System.out.println("Welcome to Address Book");
 
 		AddressBook book = new AddressBook();
-		
-		
+			
 		int input = 1;
 		while(input != 0) {
 			System.out.println("Input 0 For no action.");
 			System.out.println("Input 1 to Add a contact.");
 			System.out.println("Input 2 to update an existing contact");
-			input = sc.nextInt();
+			System.out.println("Input 3 to delete an existing contact");
+			
+			input = sc.nextInt();sc.nextLine();
 			switch(input) {
 			case 1:
 				System.out.println("Enter first name");
-				sc.nextLine();
 				String firstName = sc.nextLine();
 				System.out.println("Enter last name");
-				String lastName = sc.next();
+				String lastName = sc.nextLine();
 				System.out.println("Enter address line");
-				sc.nextLine();
 				String address = sc.nextLine();
 				System.out.println("Enter city name");
 				String city = sc.nextLine();
@@ -39,9 +38,14 @@ public class UI {
 				break;
 			case 2:
 				System.out.println("Input first name of person");
-				sc.nextLine();
 				String searchName = sc.nextLine();
 				book.updateContact(searchName);
+				break;	
+			case 3:
+				System.out.println("Input first name of the contact you want to delete");
+				String Name = sc.nextLine();
+				book.deleteContact(Name);
+				break;
 			}
 		}
 	}
