@@ -3,12 +3,10 @@ package com.cg.address;
 import java.util.*;
 
 public class UI {
-	public static void main(String[] args) {
+	public void function(AddressBook book) {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Welcome to Address Book");
-
-		AddressBook book = new AddressBook();
 			
 		int input = 1;
 		while(input != 0) {
@@ -22,6 +20,7 @@ public class UI {
 			case 1:
 				System.out.println("Enter first name");
 				String firstName = sc.nextLine();
+				if(book.hasContact(firstName))
 				System.out.println("Enter last name");
 				String lastName = sc.nextLine();
 				System.out.println("Enter address line");

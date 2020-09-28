@@ -3,29 +3,51 @@ package com.cg.address;
 import java.util.*;
 
 public class AddressBook {
-
-	public List<Contact> book = new ArrayList<Contact>();
-
-	public void addContact(Contact newContact) {
-		book.add(newContact);
-		System.out.println("New contact Added successfully with the first name: " + newContact.firstName);
+	
+	private String bookName = null;
+	public AddressBook(String bookName)
+	{
+		this.bookName= bookName;
+	}
+	
+	public String getName()
+	{
+		return bookName;
+	}
+	
+	public void setName(String bookName)
+	{
+		this.bookName = bookName;
 	}
 
-	public void DisplayContact(Contact contact) {
-		System.out.println(contact);
+	public List<Contact> book = new ArrayList<>();
+	
+	public List<Contact> getBook()
+	{
+		return book;
+	}
+	
+	public void setBook(List<Contact> book)
+	{
+		this.book = book;
 	}
 	
 	public void displayBook(List<Contact> book)
 	{
 		for(Contact oldContact : book)
 		{
-			DisplayContact(oldContact);
+			System.out.println(oldContact);
 		}
 	}
+	public void addContact(Contact newContact) {
+		book.add(newContact);
+		System.out.println("New contact Added successfully with the first name: " + newContact.firstName);
+	}	
 
-	public void updateContact(String firstName) {
+	public String updateContact(String firstName) {
 		String newFirstName = firstName;
 		Scanner sc = new Scanner(System.in);
+		int contactPresent = 0;
 		for (Contact oldContact : book) {
 			if (oldContact.firstName.equals(newFirstName)) {
 				int input = 1;
@@ -75,9 +97,13 @@ public class AddressBook {
 						break;
 					}
 				}
-			}
-			DisplayContact(oldContact);
+				contactPresent =1;
+			}			
 		}
+		if(contactPresent == 1)
+			return "Contact Updated";
+		else
+			return "No contact found with this name";
 	}
 
 	public void deleteContact(String firstName) {
@@ -97,5 +123,13 @@ public class AddressBook {
 			System.out.println("There's no such contact with the first name: "+firstName);
 		}
 		displayBook(book);
+	}
+	public boolean hasContact(String firstName) {
+		for(Contact x : book) {
+			if(x.firstName.equalsIgnoreCase(firstName)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
