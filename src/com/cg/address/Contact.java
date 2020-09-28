@@ -18,4 +18,10 @@ public class Contact {
 		this.state = state;
 		this.zipCode = zipCode;
 	}
+
+	@Override
+	public String toString() {
+		return "Contact [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city=" + city
+				+ ", state=" + state + ", zipCode=" + zipCode + "]";
+	}
 }
