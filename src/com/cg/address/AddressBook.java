@@ -14,10 +14,16 @@ public class AddressBook {
 	public void DisplayContact(Contact contact) {
 		System.out.println(contact);
 	}
+	
+	public void displayBook(List<Contact> book)
+	{
+		for(Contact oldContact : book)
+		{
+			DisplayContact(oldContact);
+		}
+	}
 
 	public void updateContact(String firstName) {
-		int update = 0;
-		int count = 0;
 		String newFirstName = firstName;
 		Scanner sc = new Scanner(System.in);
 		for (Contact oldContact : book) {
@@ -72,5 +78,24 @@ public class AddressBook {
 			}
 			DisplayContact(oldContact);
 		}
+	}
+
+	public void deleteContact(String firstName) {
+		int contactPresent = 0;
+		for (Contact oldContact : book) {
+			if (oldContact.firstName.equals(firstName)) {
+				book.remove(oldContact);
+				contactPresent=1;
+			}
+			if(contactPresent==1)
+			{
+				System.out.println("Contact Deleted successfully");
+			}
+		}
+		if(contactPresent==0)
+		{
+			System.out.println("There's no such contact with the first name: "+firstName);
+		}
+		displayBook(book);
 	}
 }
